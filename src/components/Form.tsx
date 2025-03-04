@@ -10,12 +10,12 @@ interface WeatherData{
 
 const Form = () => {
     const dispatch = useAppDispatch();
-    const {timestamp, city: name} = useAppSelector(state => state.weatherInfo) as WeatherData;
+    const {timestamp, city: name=''} = useAppSelector(state => state.weatherInfo) as WeatherData;
 
     const handleClickGetWeather = (e: FormEvent<HTMLFormElement>)   => {
         e.preventDefault();
         const city = (e.target as HTMLFormElement).city.value.trim();
-        if (city !== name || Date.now() - timestamp > weather_cache_time) {
+        if (city.toLowerCase() !== name.toLowerCase() || Date.now() - timestamp > weather_cache_time) {
             dispatch(fetchWeather(city));
         }
         (e.target as HTMLFormElement).city.value = '';
