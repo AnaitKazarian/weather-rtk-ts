@@ -6,3 +6,15 @@ export interface WeatherInfo{
     sunset: number,
     timestamp: number
 }
+
+export interface WeatherInfoResponse{
+    name: string,
+    main: {
+        temp: number,
+        pressure: number
+    },
+    sys: {
+        country: string,
+        sunset: number
+    }
+}
