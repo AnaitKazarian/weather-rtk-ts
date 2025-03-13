@@ -1,9 +1,9 @@
-
 import {useAppSelector} from "../app/hooks.ts";
 import {useGetWeatherByCityQuery} from "../features/api/weatherApi.ts";
 
 const Weather = () => {
     const city = useAppSelector(state => state.city);
+
     const {data, error, isLoading} = useGetWeatherByCityQuery(city);
 
     if (!city) {

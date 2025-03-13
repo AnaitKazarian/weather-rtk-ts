@@ -5,11 +5,11 @@ import {WeatherInfo, WeatherInfoResponse} from "../../utils/types";
 export const weatherApi = createApi({
     reducerPath: 'weatherApi',
     baseQuery: fetchBaseQuery({baseUrl: base_url}),
-    // refetchOnMountOrArgChange:
+    refetchOnMountOrArgChange: 60,
     endpoints: builder => ({
         getWeatherByCity: builder.query<WeatherInfo, string>({
             query: city => `?q=${city}&appid=${api_key}&units=metric`,
-            // keepUnusedDataFor:
+            keepUnusedDataFor: 1,
             transformResponse: (data: WeatherInfoResponse) => ({
                 city: data.name,
                 temp: data.main.temp,
